@@ -16,62 +16,64 @@ $fullname = $_SESSION['fullname'];
 <head>
     <meta charset="UTF-8">
     <title>Admin Paneli</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: url('img/shoes-bg.png') no-repeat center top;
-            background-size: cover;
-            background-color: #f2f2f2;
-        }
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background: 
+            url('img/shoes-bg.png') no-repeat center center;
+        background-size: cover; /* görseli tüm alanı kaplayacak şekilde ayarlar */
+        background-attachment: fixed; /* scroll ile kaymaz */
+    }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background-color: rgba(255, 102, 0, 0.85); /* FLO turuncusu */
-            color: white;
-        }
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 50px;
+        background-color: rgba(255, 102, 0, 0.85); /* FLO turuncusu */
+        color: white;
+    }
 
-        .logout-btn {
-            padding: 8px 15px;
-            background: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+    .logout-btn {
+        padding: 8px 15px;
+        background: #dc3545;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
 
-        .logout-btn:hover {
-            background: #a71d2a;
-        }
+    .logout-btn:hover {
+        background: #a71d2a;
+    }
 
-        .button-container {
-            margin-top: 100px;
-        }
+    .button-container {
+        margin-top: 100px;
+        text-align: center;
+    }
 
-        .menu-btn {
-            padding: 15px 30px;
-            margin: 15px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            background: #ff6600; /* FLO turuncusu */
-            color: white;
-            transition: 0.3s;
-        }
+    .menu-btn {
+        padding: 15px 30px;
+        margin: 15px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: #ff6600; /* FLO turuncusu */
+        color: white;
+        transition: 0.3s;
+    }
 
-        .menu-btn:hover {
-            background: #e65c00;
-        }
-    </style>
+    .menu-btn:hover {
+        background: #e65c00;
+    }
+</style>
+
 </head>
 <body>
     <div class="header">
