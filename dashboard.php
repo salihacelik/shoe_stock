@@ -10,7 +10,6 @@ if (!isset($_SESSION['username'])) {
 // Giriş yapan kullanıcı bilgisi
 $fullname = $_SESSION['fullname'];
 ?>
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -26,8 +25,8 @@ $fullname = $_SESSION['fullname'];
         flex-direction: column;
         background: 
             url('img/shoes-bg.png') no-repeat center center;
-        background-size: cover; /* görseli tüm alanı kaplayacak şekilde ayarlar */
-        background-attachment: fixed; /* scroll ile kaymaz */
+        background-size: cover;
+        background-attachment: fixed;
     }
 
     .header {
@@ -72,8 +71,36 @@ $fullname = $_SESSION['fullname'];
     .menu-btn:hover {
         background: #e65c00;
     }
-</style>
 
+    /* İstatistik kutuları */
+    #stats-container {
+        display: flex;
+        gap: 20px;
+        margin: 50px auto;
+        justify-content: center;
+    }
+
+    .stat-box {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        color: black;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border: 2px solid #ff6600; /* FLO turuncusu çerçeve */
+    }
+
+    #total-products {
+        color: #ff6600; /* FLO turuncusu */
+        font-size: 18px;
+    }
+
+    #total-brands {
+         color: #ff6600; /* FLO turuncusu */
+        font-size: 18px;
+    }
+   </style>
 </head>
 <body>
     <div class="header">
@@ -89,5 +116,33 @@ $fullname = $_SESSION['fullname'];
         <button class="menu-btn" onclick="window.location.href='delete_shoe.php'">Ürün Sil</button>
         <button class="menu-btn" onclick="window.location.href='list_shoe.php'">Ürün Listele</button>
     </div>
+
+    <!-- İstatistik kutuları -->
+    <div id="stats-container">
+        <div class="stat-box">
+            Toplam Ürün Sayısı: <span id="total-products">0</span>
+        </div>
+        <div class="stat-box">
+            Toplam Farklı Marka: <span id="total-brands">0</span>
+        </div>
+    </div>
+
+<script>
+function loadStats() {
+    fetch("stats.php")
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("total-products").textContent = data.total_products;
+            document.getElementById("total-brands").textContent = data.total_brands;
+        });
+}
+
+// Sayfa açıldığında yükle
+loadStats();
+
+// Her 5 saniyede bir güncelle
+setInterval(loadStats, 5000);
+</script>
+
 </body>
 </html>
