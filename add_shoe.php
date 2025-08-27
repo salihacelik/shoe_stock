@@ -44,12 +44,48 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <title>Ürün Ekle</title>
     <style>
-    .back-button {
+    /* Geri ve Dashboard/Anasayfa & Logout Butonları */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-left a {
+    text-decoration: none;
+    color: white;
+    background-color: #ff6600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.header-left a:hover {
+    opacity: 0.8;
+}
+.header-right a {
+    text-decoration: none;
+    color: white;
+    background-color: #ff6600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.header-right a:hover {
+    opacity: 0.8;
+}
+
+/* Önceki CSS */
+.back-button {
     position: absolute;
     top: 20px;
-    left: 10px; /* 10px ile biraz daha sola */
+    left: 20px;
     padding: 10px 15px;
-    background-color: #ff6600;
+    background-color: #ff6600; /* FLO turuncusu */
     color: white;
     border: none;
     border-radius: 5px;
@@ -69,8 +105,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </head>
 <body>
     <!-- Geri Butonu -->
-<button class="back-button" onclick="window.history.back()">← Geri</button>
+<div class="header">
+    <div class="header-left">
+        <a href="dashboard.php">🏠 Anasayfa</a>
+        <a href="javascript:history.back()">🔙 Geri</a>
+    </div>
+    <div class="header-right">
+        <a href="logout.php" class="logout-btn">Çıkış Yap</a>
 
+    </div>
+</div>
     <div class="form-box">
         <h2>Ürün Ekle</h2>
         <?php if (!empty($message)) echo "<p class='message'>".htmlspecialchars($message)."</p>"; ?>

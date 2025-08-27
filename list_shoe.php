@@ -42,25 +42,58 @@ if ($result && $result->num_rows > 0) {
     <meta charset="UTF-8">
     <title>Ürün Listele</title>
    <style>
-        body { font-family: Arial; background-color: #f2f2f2; margin: 0; padding: 0; }
-        .back-button { position: absolute; top: 20px; left: 20px; padding: 10px 15px; background-color: #ff6600; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; z-index: 1000; }
-        .logout {
-    position: absolute;      /* Sayfa üzerinde konumlandırma */
-    top: 20px;               /* Üstten 20px boşluk */
-    right: 20px;             /* Sağdan 20px boşluk */
-    background-color: #e6dfdfff; /* Kırmızı arka plan */
-    color: white;            /* Beyaz yazı */
-    padding: 8px 15px;       /* İç boşluk */
-    text-decoration: none;   /* Alt çizgi kaldır */
-    border-radius: 5px;      /* Kenarları yuvarlat */
-    font-size: 14px;         /* Yazı boyutu */
-    font-weight: bold;       /* Yazıyı kalın yap */
-    transition: opacity 0.2s ease; /* Hover efekti için geçiş */
+    .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-left a {
+    text-decoration: none;
+    color: white;
+    background-color: #ff6600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.header-left a:hover {
+    opacity: 0.8;
+}
+.header-right a {
+    text-decoration: none;
+    color: white;
+    background-color: #ff6600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.header-right a:hover {
+    opacity: 0.8;
 }
 
-.logout:hover {
-    opacity: 0.8;            /* Hover’da hafif saydamlık */
+/* Önceki CSS */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 15px;
+    background-color: #ff6600; /* FLO turuncusu */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    z-index: 1000;
 }
+
+        body { font-family: Arial; background-color: #f2f2f2; margin: 0; padding: 0; }
+        .back-button { position: absolute; top: 20px; left: 20px; padding: 10px 15px; background-color: #ff6600; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 14px; z-index: 1000; }
+        
         .container { width: 90%; margin: 60px auto 30px auto; }
         h2 { text-align:center; color:#ff6600; margin-bottom: 15px; }
         .search-form { margin-bottom: 20px; text-align: center; }
@@ -82,8 +115,17 @@ if ($result && $result->num_rows > 0) {
 </head>
 <body>
 
-<button class="back-button" onclick="window.history.back()">← Geri</button>
-<a class="logout" href="logout.php" class="logout">Çıkış Yap</a>
+<div class="header">
+    <div class="header-left">
+        <a href="dashboard.php">🏠 Anasayfa</a>
+        <a href="javascript:history.back()">🔙 Geri</a>
+    </div>
+    <div class="header-right">
+        <a href="logout.php" class="logout-btn">Çıkış Yap</a>
+
+    </div>
+</div>
+
 
 <div class="container">
 
